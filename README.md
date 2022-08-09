@@ -23,5 +23,6 @@ Although it is manual 😮‍💨.. I thought it would be better to have a funct
 
 ## TODO
 
+- Fix [#1](https://github.com/x86chi/SDVX-key-mapper/issues/1) Bug (currently not working 😕)
 - [ ] Ability to override mouse input when focusing on a specific game application
 - [ ] CLI to GUI
