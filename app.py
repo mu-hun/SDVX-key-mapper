@@ -1,4 +1,3 @@
-from typing import Union
 import keyboard
 import mouse
 
@@ -8,29 +7,32 @@ left_knob = {'left': 'q', 'right': 'w'}
 right_knob = {'left': 'o', 'right': 'p'}
 
 
-def handle_mouse_hook(event: Union[mouse.ButtonEvent, mouse.WheelEvent, mouse.MoveEvent]):
-    if 'x' in event and 'y' in event:
-        if event.x < lock['x']:
-            keyboard.send(left_knob['left'])
-        elif event.x > lock['x']:
-            keyboard.send(left_knob['right'])
-
-        if event.y < lock['y']:
-            keyboard.send(right_knob['left'])
-        elif event.y > lock['y']:
-            keyboard.send(right_knob['right'])
-
-
 def register_mouse_hook():
-    mouse.hook(handle_mouse_hook)
-
     while True:
-        if keyboard.is_pressed('shift') and keyboard.is_pressed('p') and keyboard.is_pressed('i') and keyboard.is_pressed('e'):
-            mouse.unhook_all()
+        mouse.move(lock['x'], lock['y'], duration=0.01)
+
+        if keyboard.is_pressed('shift'):
             break
         else:
-            mouse.move(lock['x'], lock['y'])
+            x, y = mouse.get_position()
+            if x == lock['x']:
+                keyboard.release(left_knob['left'])
+                keyboard.release(left_knob['right'])
+            elif x < lock['x']:
+                keyboard.press(left_knob['left'])
+
+            elif x > lock['x']:
+                keyboard.press(left_knob['right'])
+
+            if y == lock['y']:
+                keyboard.release(right_knob['left'])
+                keyboard.release(right_knob['right'])
+            if y < lock['y']:
+                keyboard.press(right_knob['left'])
+
+            elif y > lock['y']:
+                keyboard.press(right_knob['right'])
 
 
-keyboard.add_hotkey('shift+p+i', register_mouse_hook)
+keyboard.add_hotkey('p+i', register_mouse_hook)
 keyboard.wait()

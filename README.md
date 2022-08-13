@@ -18,11 +18,10 @@ Although it is manual 😮‍💨.. I thought it would be better to have a funct
 1. Install [pipenv](https://pypi.org/project/pipenv/)
 2. run `pipenv install`
 3. run `python3 app.py` (require administrator permission)
-   - enable override mouse input with <kbd>shift+p+i</kbd> shortcut
-   - disable override mouse input with <kbd>shift+p+i+e</kbd> shortcut
+   - enable override mouse input with <kbd>p+i</kbd> shortcut
+   - disable override mouse input with <kbd>shift</kbd> shortcut
 
 ## TODO
 
-- Fix [#1](https://github.com/x86chi/SDVX-key-mapper/issues/1) Bug (currently not working 😕)
 - [ ] Ability to override mouse input when focusing on a specific game application
 - [ ] CLI to GUI
